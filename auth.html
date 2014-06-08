@@ -1,4 +1,5 @@
 <html>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reqwest/1.1.0/reqwest.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		function getParameterByName(name) {
@@ -8,8 +9,9 @@
 		    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 		}		
 
-		function getJSON(requestURL) {
+		function getJSON(requestURL, requestHeaders) {
 		    var xmlHttp = new XMLHttpRequest();
+		    xmlHttp.
 		    xmlHttp.open( "GET", requestURL, false );
 		    xmlHttp.send( null );
 		    return $.parseJSON(xmlHttp.responseText);
@@ -26,8 +28,8 @@
 
 		var accessData= getJSON(authCodeReq);
 
-		console.log("Acces token:" + accessData["access_token"]);
-
+		console.log("Access token:" + accessData["access_token"]);
+ 
 
 
 	</script>
