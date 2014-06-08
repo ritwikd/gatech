@@ -1,7 +1,7 @@
 from datetime import timedelta
 from flask import Flask,make_response, request, current_app
 from functools import update_wrapper
-
+import requests
 
 def crossdomain(origin=None, methods=None, headers=None,
                 max_age=21600, attach_to_all=True,
@@ -47,8 +47,12 @@ app = Flask(__name__)
 
 @app.route('/<access_token>')
 @crossdomain(origin='*')
-def hello_world(access_token):
-    return access_token
+def getMoves(access_token):
+    authH = {
+        'Authorization' : 'Bearer ' + access_token
+    }
+    requestData = requests.get('https://jawbone.com/nudge/api/v.1.1/users/@me/moves', headers=authH);
+    return requestData.text
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8081)
+    app.run(host='0.0.0.0', port=8081, debug=True)
