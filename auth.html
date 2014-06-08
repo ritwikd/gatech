@@ -1,34 +1,35 @@
 <html>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		function getParameterByName() {
-			var name = 'code';
+		function getParameterByName(name) {
 		    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
 			    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
 		    results = regex.exec(location.search);
 		    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 		}		
 
-		function HTTPGet(requestURL)
-		{
+		function getJSON(requestURL) {
 		    var xmlHttp = new XMLHttpRequest();
 		    xmlHttp.open( "GET", requestURL, false );
 		    xmlHttp.send( null );
-		    return xmlHttp.responseText;
+		    return $.parseJSON(xmlHttp.responseText);
 		}
 
 
-		var accessToken = getParameterByName('code');
-		console.log(accessToken);
+		var authCode = getParameterByName("code");
 
-		var authCodeReq = "https://jawbone.com/auth/oauth2/token?client_id=UDqByBVlzAY" +
-			"&client_secret=596ddf4fa41785c02876d5a1e86f0c2d44f47988&code=" + 
-			accessToken + 
+		var authCodeReq = "https://jawbone.com/auth/oauth2/token" + 
+			"?client_id=UDqByBVlzAY" +
+			"&client_secret=596ddf4fa41785c02876d5a1e86f0c2d44f47988" + 
+			"&code=" + authCode + 
 			"&grant_type=authorization_code";
 
-		var authCodeTemp = $.parseJSON(HTTPGet(authCodeReq));
+		var accessData= getJSON(authCodeReq);
 
-		console.log(authCodeTemp);
+		console.log("Acces token:" + accessData["access_token"]);
+
+
+
 	</script>
 
 </html>
