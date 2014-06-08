@@ -16,7 +16,11 @@
 			accessToken + 
 			"&grant_type=authorization_code";
 
-		alert(authCodeReq);
+		var authCodeJSON;
+		$.get(authCodeReq, function(e) {
+			authCodeJSON = e;
+		})
+		console.log(authCodeJSON);
 	</script>
 
 </html>
