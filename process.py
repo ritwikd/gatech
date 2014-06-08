@@ -1,14 +1,9 @@
-from flask import Flask, jsonify, render_template, request
+from flask import Flask
 app = Flask(__name__)
- 
+
 @app.route('/')
-def index():
-    return render_template('index.html')
- 
-@app.route('/echo/', methods=['GET'])
-def echo():
-    ret_data = {"value": request.args.get('echoValue')}
-    return jsonify(ret_data)
- 
+def hello_world():
+    return 'Hello World!'
+
 if __name__ == '__main__':
-    app.run(port=8080, debug=True)
+    app.run(host='0.0.0.0', port=8081, debug=True)
