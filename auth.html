@@ -30,16 +30,13 @@
 		console.log("Access token:" + accessData["access_token"]);
  
 		$.ajax({
-		  type: "GET",
-		  url: "process.py",
-		  data: {
-		    a: "aa",
-		    b: "bb"
-		  },
-		  success: function(response) {
-		  		console.log(response);
-		  }
-			});
+            url: "process.py",
+            type: "POST",
+            data: {foo: 'bar', bar: 'foo'},
+            success: function(response){
+                    $("#div").html(response);
+                }
+       });
 
 
 	</script>
