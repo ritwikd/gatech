@@ -29,6 +29,13 @@
 
 		console.log("Access token:" + accessData["access_token"]);
  
+		$.ajax({
+		  type: "GET",
+		  url: "process.py",
+		  data: { param: "Testing"}
+		}).done(function( o ) {
+		   console.log(o);
+		});
 
 
 	</script>
