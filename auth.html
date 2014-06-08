@@ -32,10 +32,14 @@
 		$.ajax({
 		  type: "GET",
 		  url: "process.py",
-		  data: { param: "Testing"}
-		}).done(function( o ) {
-		   console.log(o);
-		});
+		  data: {
+		    a: "aa",
+		    b: "bb"
+		  },
+		  success: function(response) {
+		  		console.log(response);
+		  }
+			});
 
 
 	</script>

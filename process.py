@@ -1,5 +1,6 @@
-def GET(param):
-	return "Received: " + param + ". Successful get request!"
+import cgi
 
-def main():
-	return "Called get, but in main!"
+my_param = cgi.getfirst('a')
+
+print "Content-Type: text/html\n"
+print my_param
