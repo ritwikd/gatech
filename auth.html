@@ -11,7 +11,6 @@
 
 		function getJSON(requestURL, requestHeaders) {
 		    var xmlHttp = new XMLHttpRequest();
-		    xmlHttp.
 		    xmlHttp.open( "GET", requestURL, false );
 		    xmlHttp.send( null );
 		    return $.parseJSON(xmlHttp.responseText);
