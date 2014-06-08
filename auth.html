@@ -11,13 +11,12 @@
 
 		function HTTPGet(requestURL)
 		{
-		    var xmlHttp = null;
-
-		    xmlHttp = new XMLHttpRequest();
+		    var xmlHttp = new XMLHttpRequest();
 		    xmlHttp.open( "GET", requestURL, false );
 		    xmlHttp.send( null );
 		    return xmlHttp.responseText;
 		}
+
 
 		var accessToken = getParameterByName('code');
 		console.log(accessToken);
