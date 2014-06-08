@@ -19,7 +19,7 @@
 		var authCodeTemp;
 
 		$.get(authCodeReq, function(e) {
-			authCodeTemp = e['responseText'];
+			authCodeTemp = e;
 		});
 
 		var authCodeJSON = authCodeTemp['responseText'];
