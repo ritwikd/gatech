@@ -17,7 +17,7 @@
 			"&grant_type=authorization_code";
 
 		var authCodeTemp = $.get(authCodeReq, function(e) {
-			return e;
+			return e['responseText'];
 		});
 
 		var authCodeJSON = authCodeTemp['responseText'];
