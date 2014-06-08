@@ -1,14 +1,14 @@
-#!/usr/bin/python
-
-import cgi, cgitb 
-cgitb.enable()  # for troubleshooting
-
-#the cgi library gets vars from html
-data = cgi.FieldStorage()
-#this is the actual output
-print "Content-Type: text/html\n"
-print "The foo data is: " + data["foo"].value
-print "<br />"
-print "The bar data is: " + data["bar"].value
-print "<br />"
-print data
+from flask import Flask, jsonify, render_template, request
+app = Flask(__name__)
+ 
+@app.route('/')
+def index():
+    return render_template('index.html')
+ 
+@app.route('/echo/', methods=['GET'])
+def echo():
+    ret_data = {"value": request.args.get('echoValue')}
+    return jsonify(ret_data)
+ 
+if __name__ == '__main__':
+    app.run(port=8080, debug=True)
