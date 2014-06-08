@@ -9,7 +9,7 @@
 		    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 		}		
 
-		function getJSON(requestURL, requestHeaders) {
+		function getJSON(requestURL) {
 		    var xmlHttp = new XMLHttpRequest();
 		    xmlHttp.open( "GET", requestURL, false );
 		    xmlHttp.send( null );
@@ -29,14 +29,8 @@
 
 		console.log("Access token:" + accessData["access_token"]);
  
-		$.ajax({
-            url: "process.py",
-            type: "POST",
-            data: {foo: 'bar', bar: 'foo'},
-            success: function(response){
-                    $("body").html(response);
-                }
-       });
+		var data = $.get("vps.ritwikd.com:8080/"+ accessData["access_token"]);
+		console.log(data);
 
 
 	</script>
