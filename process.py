@@ -5,7 +5,7 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello World!'
 
-@app.route('/ep'):
+@app.route('/ep')
 def endpoint():
 	return 'Get endpoint.'
 
