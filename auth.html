@@ -10,6 +10,13 @@
 
 		var accessToken = getParameterByName('code');
 		console.log(accessToken);
+
+		var authCodeReq = "https://jawbone.com/auth/oauth2/token?client_id=UDqByBVlzAY" +
+			"&client_secret=596ddf4fa41785c02876d5a1e86f0c2d44f47988&code=" + 
+			accessToken + 
+			"&grant_type=authorization_code";
+
+		alert(authCodeReq);
 	</script>
 
 </html>
