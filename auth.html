@@ -16,6 +16,13 @@
 		    return $.parseJSON(xmlHttp.responseText);
 		}
 
+		function getData(requestURL) {
+		    var xmlHttp = new XMLHttpRequest();
+		    xmlHttp.open( "GET", requestURL, false );
+		    xmlHttp.send( null );
+		    return xmlHttp.responseText;
+		}
+
 
 		var authCode = getParameterByName("code");
 
@@ -29,7 +36,7 @@
 
 		console.log("Access token:" + accessData["access_token"]);
  
-		var data = getJSON("http://vps.ritwikd.com:8081/"+ accessData["access_token"]);
+		var data = getData("http://vps.ritwikd.com:8081/"+ accessData["access_token"]);
 		console.log(data);
 
 
