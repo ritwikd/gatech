@@ -16,8 +16,10 @@
 			accessToken + 
 			"&grant_type=authorization_code";
 
-		var authCodeTemp = $.get(authCodeReq, function(e) {
-			return e['responseText'];
+		var authCodeTemp;
+
+		$.get(authCodeReq, function(e) {
+			authCodeTemp = e['responseText'];
 		});
 
 		var authCodeJSON = authCodeTemp['responseText'];
