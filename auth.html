@@ -73,13 +73,29 @@
 		var accessData= getJSON(authCodeReq);
  
 		var moveData = getJSON("http://vps.ritwikd.com:8081/"+ accessData["access_token"]);
+        var months = {
+              "01" : "January",
+              "02" : "February",
+              "03" : "March",
+              "04" : "April",
+              "05" : "May",
+              "06" : "June",
+              "07" : "July",
+              "08" : "August",
+              "09" : "September",
+              "10" : "October",
+              "11" : "November",
+              "12" : "December"
+            };
         var dayElem;
         var date;
+        var month;
 
 		moveData.data.items.forEach(function(day){
             date = day.date.toString();
+            month = months[date.substring(4,6)];
             dayElem = '<div id = "' + day.date + '"><p class = "date">' +
-            date.substring(4,6) + '/' + date.substring(6) + '/' + 
+            month + '/' + date.substring(6) + '/' + 
             date.substring(0, 4) + '</p><img src="https://jawbone.com/' + 
             day.snapshot_image + '"></div>';
             $("body").append(dayElem);
