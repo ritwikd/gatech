@@ -1,5 +1,50 @@
 <html>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/reqwest/1.1.0/reqwest.min.js"></script>
+
+    <head>
+        <title>Information</title>
+
+       <link href='https://fonts.googleapis.com/css?family=Titillium+Web:200,400,300,600' rel='stylesheet' type='text/css'>
+
+        <style type="text/css">
+            body {
+                font-family : 'Titillium Web';
+                background-color : #EFEFEF;
+            }
+
+            #label {
+                font-size: 400%;
+                font-weight: 300;
+                margin-left: 25%;
+            }
+            .date {
+                font-size   : 150%;
+                font-weight : 600;
+                padding: 5%;
+            }
+
+            img {
+                margin-left: 10%;
+                padding-left: 5%;
+                padding-right: 5%;
+
+                background-color : #FFFFFF;
+                -webkit-box-shadow: 11px 11px 0px 0px rgba(0, 0, 0, 0.25);
+
+                -moz-box-shadow:    11px 11px 0px 0px rgba(0, 0, 0, 0.25);
+
+                box-shadow:         11px 11px 0px 0px rgba(0, 0, 0, 0.25);
+            }
+        </style>
+    </head>
+    
+    <body>
+            
+            <div id = "label">Last 10 Days of Movement</div>
+
+    </body>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reqwest/1.1.0/reqwest.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		function getParameterByName(name) {
@@ -28,10 +73,21 @@
 		var accessData= getJSON(authCodeReq);
  
 		var moveData = getJSON("http://vps.ritwikd.com:8081/"+ accessData["access_token"]);
-		console.log(moveData);
+        var dayElem;
+        var date;
+
+		moveData.data.items.forEach(function(day){
+            date = day.date.toString();
+            dayElem = '<div id = "' + day.date + '"><p class = "date">' +
+            date.substring(4,6) + '/' + date.substring(6) + '/' + 
+            date.substring(0, 4) + '</p><img src="https://jawbone.com/' + 
+            day.snapshot_image + '"></div>';
+            $("body").append(dayElem);
+        });        
+        console.log(moveData);
+
 
 
 	</script>
 
 </html>
-
