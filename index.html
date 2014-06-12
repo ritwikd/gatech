@@ -2,11 +2,13 @@
 
 <html>
 	<head>
-		<title></title>
+		<title>Project</title>
 
+		<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600,200' rel='stylesheet' type='text/css'>
 		<style type="text/css">
 
 			body {
+				font-family: 'Titillium Web';
 				background: rgb(238,238,238); /* Old browsers */
 				background: -moz-linear-gradient(top,  rgba(238,238,238,1) 0%, rgba(238,238,238,1) 100%); /* FF3.6+ */
 				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(238,238,238,1)), color-stop(100%,rgba(238,238,238,1))); /* Chrome,Safari4+ */
@@ -17,13 +19,52 @@
 				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
 			}
 
+			#authbutton {
+				position: fixed;
+				left: 45%;
+				top: 40%;
+				font-size: 200%;
+				color: #FFFFFF;
+				text-decoration: none;
+				background-color: #5FD6FA;
+				padding: .5%;
+				transition: all 150ms linear;
+				-webkit-transition: all 150ms linear;
+				-webkit-border-radius: 10px;
+				-moz-border-radius: 10px;
+				border-radius: 10px;
+				-webkit-box-shadow: 7px 7px 0px 0px rgba(0, 0, 0, 0.45);
+				-moz-box-shadow:    7px 7px 0px 0px rgba(0, 0, 0, 0.45);
+				box-shadow:         7px 7px 0px 0px rgba(0, 0, 0, 0.45);
+			}
+
+			#authbutton:hover {
+				transform: scale(1.25, 1.25);
+				-webkit-transform: scale(1.25, 1.25);
+				color: #FFFFFF;
+				background-color: #18F06B;
+				transition: all 150ms linear;
+				-webkit-transition: all 150ms linear;
+				-webkit-box-shadow: -7px 7px 0px 0px rgba(0, 0, 0, 0.45);
+				-moz-box-shadow:    -7px 7px 0px 0px rgba(0, 0, 0, 0.45);
+				box-shadow:         -7px 7px 0px 0px rgba(0, 0, 0, 0.45);
+			}	
+
+			#label {
+				font-weight: 100;
+				font-size: 72px;
+				padding: 2%;
+			}
+
 		</style>
 
 	</head>
 
 	<body>
 
-		<a href = "https://jawbone.com/auth/oauth2/auth?response_type=code&client_id=UDqByBVlzAY&scope=basic_read%20extended_read%20location_read%20friends_read%20mood_read%20mood_write%20move_read%20move_write%20sleep_read%20sleep_write%20meal_read%20meal_write%20weight_read%20weight_write%20cardiac_read%20cardiac_write%20generic_event_read%20generic_event_write&redirect_uri=https://vps.ritwikd.com/auth.html">Authenticate</a>
+		<div id = "label">RESEARCH PROJECT</div>
+
+		<a id = "authbutton" href = "https://jawbone.com/auth/oauth2/auth?response_type=code&client_id=UDqByBVlzAY&scope=basic_read%20extended_read%20location_read%20friends_read%20mood_read%20mood_write%20move_read%20move_write%20sleep_read%20sleep_write%20meal_read%20meal_write%20weight_read%20weight_write%20cardiac_read%20cardiac_write%20generic_event_read%20generic_event_write&redirect_uri=https://vps.ritwikd.com/auth.html">LOGIN</a>
 
 	</body>
 
