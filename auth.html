@@ -12,9 +12,10 @@
             }
 
             #label {
+                width: 100%;
+                text-align: center;
                 font-size: 400%;
                 font-weight: 300;
-                margin-left: 25%;
             }
             .date {
                 font-size   : 150%;
@@ -95,7 +96,7 @@
             date = day.date.toString();
             month = months[date.substring(4,6)];
             dayElem = '<div id = "' + day.date + '"><p class = "date">' +
-            month + '/' + date.substring(6) + '/' + 
+            month + ' ' + date.substring(6) + ', ' + 
             date.substring(0, 4) + '</p><img src="https://jawbone.com/' + 
             day.snapshot_image + '"></div>';
             $("body").append(dayElem);
