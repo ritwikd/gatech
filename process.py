@@ -1,7 +1,7 @@
 from datetime import timedelta
 from flask import Flask,make_response, request, current_app
 from functools import update_wrapper
-import requests
+import requests, nltk, shlex
 
 def crossdomain(origin=None, methods=None, headers=None,
                 max_age=21600, attach_to_all=True,
@@ -58,7 +58,14 @@ def getMoves(access_token):
 @crossdomain(origin='*')
 def getWeah(airport):
     requestData = requests.get("http://aviationweather.gov/adds/metars/?station_ids=" + airport + "&std_trans=standard&chk_metars=on&hoursStr=past+24+hours&submitmet=Submit");
-    return requestData.text
+    weatherData = nltk.clean_html(requestData.text)
+    weatherData = weatherData.split(" ")
+    temps = []
+    for term in weatherData:
+        if (len(term) == 5 and '/' in term):
+            temps.append(term.split("/")[0])
+
+    return '[{"temp":  '+ '},{"temp":  '.join(temps) + '}]'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8081, debug=True)
