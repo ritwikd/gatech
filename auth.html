@@ -97,12 +97,15 @@
 
        var stepArr = [];
 
-       moveData.data.items.forEach(function(item) {
-            console.log(item.details.date);
-//            item.details.hourly_totals.forEach(function(hour) {
-//                console.log(hour.steps);
-//            });
+       
+       $.each(moveData.data.items, function(i, item) {
+           console.log(item.date);
+           $.each(item.details.hourly_totals, function(i, hour) {
+               stepArr.push(hour.steps);
+           });
        });
+
+       console.log(stepArr);
  
 
 
