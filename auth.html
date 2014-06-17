@@ -41,12 +41,13 @@
     <body>
             
             <div id = "label">Last 10 Days of Movement</div>
+            <canvas id = "chart" width="100%" height="100%"></canvas>
 
     </body>
 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reqwest/1.1.0/reqwest.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js"></script>
+
 	<script type="text/javascript">
 		function getParameterByName(name) {
 		    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -92,16 +93,8 @@
         var date;
         var month;
 
-		moveData.data.items.forEach(function(day){
-            date = day.date.toString();
-            month = months[date.substring(4,6)];
-            dayElem = '<div id = "' + day.date + '"><p class = "date">' +
-            month + ' ' + date.substring(6) + ', ' + 
-            date.substring(0, 4) + '</p><img src="https://jawbone.com/' + 
-            day.snapshot_image + '"></div>';
-            $("body").append(dayElem);
-        });        
-        console.log(moveData);
+       console.log(moveData);
+ 
 
 
 
