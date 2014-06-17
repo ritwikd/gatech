@@ -45,13 +45,19 @@ def crossdomain(origin=None, methods=None, headers=None,
     return decorator
 app = Flask(__name__)
 
-@app.route('/<access_token>')
+@app.route('/moves=<access_token>')
 @crossdomain(origin='*')
 def getMoves(access_token):
     authH = {
         'Authorization' : 'Bearer ' + access_token
     }
     requestData = requests.get('https://jawbone.com/nudge/api/v.1.1/users/@me/moves', headers=authH);
+    return requestData.text
+
+@app.route("/weather=<airport>")
+@crossdomain(origin='*')
+def getWeah(airport):
+    requestData = requests.get("http://aviationweather.gov/adds/metars/?station_ids=" + airport + "&std_trans=standard&chk_metars=on&hoursStr=past+24+hours&submitmet=Submit");
     return requestData.text
 
 if __name__ == '__main__':
