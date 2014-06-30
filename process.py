@@ -2,6 +2,7 @@ from datetime import timedelta
 from flask import Flask,make_response, request, current_app
 from functools import update_wrapper
 import requests, nltk, shlex
+import pymongo
 
 def crossdomain(origin=None, methods=None, headers=None,
                 max_age=21600, attach_to_all=True,
@@ -45,12 +46,16 @@ def crossdomain(origin=None, methods=None, headers=None,
     return decorator
 app = Flask(__name__)
 
+
+
 @app.route('/moves=<access_token>')
 @crossdomain(origin='*')
 def getMoves(access_token):
     authH = {
         'Authorization' : 'Bearer ' + access_token
     }
+    print access_token
+    x = access_token
     requestData = requests.get('https://jawbone.com/nudge/api/v.1.1/users/@me/moves', headers=authH);
     return requestData.text
 
@@ -65,7 +70,7 @@ def getWeah(airport):
         if (len(term) == 5 and '/' in term):
             temps.append(term.split("/")[0])
 
-    return '[{"temp":  '+ '},{"temp":  '.join(temps) + '}]'
+    return x
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8081, debug=True)
